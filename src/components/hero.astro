@@ -1,52 +1,67 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "assets/hero.png";
-import Link from "@components/ui/link.astro";
-import { Icon } from "astro-icon/components";
+import { Image, Picture } from "astro:assets";
+import logoImage from "assets/images/logo_transparent.png"; // Asegúrate de que esta ruta sea correcta
+import Container from "@components/container.astro"; // Asegúrate de que esto sea correcto
+import Layout from "@layouts/Layout.astro"; // Asegúrate de que esto sea correcto
+const { frontmatter } = Astro.props;
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
-  </div>
-  <div>
-    <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      L'art d'innover, <br> la clé pour performer
-        </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Chez InnovArt, nous redéfinissons les limites de l'innovation digitale.
-      Spécialisés dans la conception web, l'automatisation des processus, et l'analyse de données,<wbr />  nous accompagnons votre entreprise vers un avenir digital plus performant et connecté..
-    </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="#"
-        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+<Layout>
+  <Container>
+    <header class="flex items-center justify-center p-4">
+      <div class="logo">
+        <Picture
+          src={logoImage}
+          alt="Logo de InnovArt"
+          widths={[100, 200, 300]} // Ajusta según sea necesario
+          sizes="(max-width: 800px) 100vw, 200px" // Ajusta según tu diseño
+          loading="eager"
+          format="avif"
+        />
+      </div>
+    </header>
 
-         Download for Free
-      </Link>
-      <Link
-        size="lg"
-        style="outline"
-        rel="noopener"
-        href="https://github.com/surjithctly/astroship"
-        class="flex gap-1 items-center justify-center"
-        target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-         GitHub Repo
-      </Link>
-    </div>
-  </div>
-</main>
+    <main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+      <div class="py-6 md:order-1 hidden md:block">
+        <Picture
+          src={Image} // Esta imagen es para el centro de la página
+          alt="Descripción de la imagen central"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 800px) 100vw, 620px"
+          loading="eager"
+          format="avif"
+        />
+      </div>
+      <div>
+        <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+          L'art d'innover, <br> la clé pour performer
+        </h1>
+        <p class="text-lg mt-4 text-slate-600 max-w-xl">
+          Chez InnovArt, nous redéfinissons les limites de l'innovation digitale.
+          Spécialisés dans la conception web, l'automatisation des processus, et l'analyse de données,
+          nous accompagnons votre entreprise vers un avenir digital plus performant et connecté.
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <Link
+            href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
+            target="_blank"
+            class="flex gap-1 items-center justify-center"
+            rel="noopener">
+            <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+            Download for Free
+          </Link>
+          <Link
+            size="lg"
+            style="outline"
+            rel="noopener"
+            href="https://github.com/surjithctly/astroship"
+            class="flex gap-1 items-center justify-center"
+            target="_blank">
+            <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
+            GitHub Repo
+          </Link>
+        </div>
+      </div>
+    </main>
+  </Container>
+</Layout>
